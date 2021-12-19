@@ -21,7 +21,7 @@
         <div class="ele snow-big" style="width: 70px; left: 10px; top: 150px;"><img src="img/001.png" /></div>
         <div class="ele intro" style="width: 220px; left: 10px; top: 0px;"><img src="img/005.png" /></div>
         <div class="ele intro" style="width: 235px; left: 30px; top: 60px;"><img src="img/006.png" /></div>
-        <div class="ele intro" style="width: 120px; left: 35px; top: 150px;"><img src="img/003.png" /></div>
+        <div class="ele intro" style="width: 120px; left: 35px; top: 150px;"><img id="word" src="img/003.png" /></div>
         <!---->
         <div class="ele rotate1" style="width: 80px; left: 250px; top: -30px;"><img src="img/001.png" /></div>
         <div class="ele rotate2" style="width: 100px; left: 270px; top: 70px;"><img src="img/001.png" /></div>
@@ -55,6 +55,7 @@
                 setTimeout(createSnow, Math.round(Math.random()*8000)+1000);
             }
             //
+            $("#word").prop('src', location.hash=='#spring'? 'img/003a.png':'img/003.png');
             $(".star").each(function () {$(this).addClass(Math.round(Math.random())? 'rotate1':'rotate2')});
             $(".intro").each(function (i) {$(this).css('animation-delay', i*600 +'ms')});
             $(".slide").each(function (i) {$(this).css('animation-delay', i*100+2000 +'ms')});
