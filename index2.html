@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>北京奥运城市发展促进会 - 2022新年贺卡</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/app2.css">
+
+        <script src="libs/modernizr-2.8.3.min.js"></script>
+        <script src="libs/jquery-1.12.0.min.js"></script>
+    </head>
+    <body>
+
+    <div class="app-body">
+        <div id="musicSwitch" class="m-btn"></div>
+        <div class="ele intro" style="width: 220px; left: 60px; top: 400px;"><img src="img/021.png" /></div>
+        <div class="ele intro" style="width: 100px; left: 110px; top: 460px;"><img src="img/020.png" /></div>
+        <div class="ele intro" style="width: 35px; left: 155px; top: 500px;"><img src="img/018.png" /></div>
+        <div class="ele intro" style="width: 190px; left: 75px; top: 575px;"><img src="img/005.png" /></div>
+        <div class="ele fill" style="width: 320px; left: 10px; top: 566px;"><img src="img/026.png" /></div>
+        <div class="ele slide" style="width: 100px; left: 75px; top: 250px;"><img src="img/016.png" /></div>
+        <div class="ele loop" style="width: 70px; left: 135px; top: 120px;"><img src="img/019.png" /></div>
+        <div class="ele star" style="width: 40px; left: 220px; top: 80px;"><img src="img/022.png" /></div>
+        <div class="ele ski" style="width: 40px; left: 195px; top: 170px;"><img src="img/017.png" /></div>
+        <div class="ele loop" style="width: 30px; left: 100px; top: 70px;"><img src="img/023.png" /></div>
+        <!---->
+        <div class="ele star" style="width: 23px; left: 270px; top: 590px;"><img src="img/024.png" /></div>
+        <div class="ele star" style="width: 23px; left: 180px; top: 570px;"><img src="img/024.png" /></div>
+        <div class="ele star" style="width: 23px; left: 30px; top: 600px;"><img src="img/024.png" /></div>
+    </div>
+    <audio id="m" autoplay="autoplay" loop="loop" src="bg1.mp3"></audio>
+
+    <script>
+        //
+        var media = document.getElementById("m");
+        document.addEventListener('WeixinJSBridgeReady', function(){media.play()});
+        //
+        $(function () {
+            //
+            for (var i=0; i<30; i++) {
+                setTimeout(createSnow, Math.round(Math.random()*8000)+0);
+            }
+            //
+            $(".star").each(function () {$(this).addClass(Math.round(Math.random())? 'rotate1':'rotate2')});
+            $(".intro").each(function (i) {$(this).css('animation-delay', i*600 +'ms')});
+            $(".slide").each(function (i) {$(this).css('animation-delay', i*100+2000 +'ms')});
+            $(".loop").each(function () {$(this).css('animation-delay', Math.round(Math.random()*5000+3000)+'ms')});
+            //
+            $("#musicSwitch").click(function () {
+                $(this).toggleClass("m-motion");
+                if (media.paused) media.play();
+                else media.pause();
+            });
+            //
+            $(window).resize(function () {
+                var ww = $(this).width(), wh = $(this).height();
+                var pw = $('.app-body').width(), ph = $('.app-body').height();
+                var flip = wh < ww && false;
+                var deg = flip? '90deg':'0';
+                var ratio = flip? Math.min(ww/ph, wh/pw):Math.min(ww/pw, wh/ph);
+                $('.app-body').css({
+                    top: Math.round((wh-ph)/2),
+                    left: Math.round((ww-pw)/2),
+                    transform: 'rotate('+deg+') scale('+ratio+')'
+                });
+            }).resize();
+        });
+        //
+        function createSnow() {
+            var star = $('<div class="snow"></div>');
+            var x = Math.round(Math.random()*($(window).width()-100))+50;
+            var y = Math.round(Math.random()*($(window).height()-100))+50;
+            star.width(20).height(20).css({left: x, top: y}).appendTo(".app-body");
+            setTimeout(function () {
+                star.remove();
+                createSnow();
+            }, 5000);
+        }
+    </script>
+    </body>
+</html>

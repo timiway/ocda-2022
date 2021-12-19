@@ -1,0 +1,65 @@
+
+html, body { height: 100%; background: #62c2ec;}
+
+.app-body { height: 640px; width: 340px; background: url("../img/025.jpg") center 10px/320px no-repeat; overflow: hidden; position: relative;}
+.m-btn { position: absolute; right: 15px; top: 15px; width: 20px; height: 20px; border: 2px solid white; border-radius: 50%;}
+.m-btn { background: black url("../img/switch.png") 50% 50%/100% 100% no-repeat; opacity: 0.5; z-index: 99;}
+
+.ele { position: absolute; }
+.ele img { width: 100%;}
+.snow { position: absolute; background: url("../img/024.png") 50% 50%/100% 100% no-repeat; }
+
+.m-btn { animation: key-btn 600ms ease infinite; }
+.loop { animation: key-loop 8s ease infinite both; }
+.snow { animation: key-snow 5s ease both; }
+.intro { animation: key-intro 2s ease both; }
+.rotate1 { animation: key-rotate 30s linear infinite normal; }
+.rotate2 { animation: key-rotate 20s linear infinite reverse; }
+.slide { animation: key-slide-left 800ms ease both; }
+.ski { animation: key-ski 10s ease 3s infinite both; }
+.fill { animation: key-fill 1s ease both; }
+/*.swing { animation: key-swing 5s ease-in-out 5s infinite; transform-origin: 50% 90%; }*/
+
+@keyframes key-btn {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.1);}
+    100% { transform: scale(1);}
+}
+@keyframes key-slide-left {
+    from { left: -300px; opacity: 0; }
+}
+@keyframes key-slide-bottom {
+    from { right: -300px; opacity: 0; }
+}
+/*@keyframes key-swing {*/
+    /*0% { transform: rotate(0deg); }*/
+    /*25% { transform: rotate(2deg); }*/
+    /*70% { transform: rotate(-4deg); }*/
+    /*100% { transform: rotate(0deg); }*/
+/*}*/
+@keyframes key-snow {
+    0% { opacity: 1; transform: scale(1.2);}
+    50% { opacity: 1; transform: scale(1);}
+    100% { opacity: 0; transform: scale(1);}
+}
+@keyframes key-intro {
+    from { opacity: 0; transform: scale(1.2);}
+}
+@keyframes key-rotate {
+    to { transform: rotate(360deg);}
+}
+@keyframes key-ski {
+    0% { transform: translate(20px,10px); opacity: 0; }
+    20% { transform: translate(0,0); opacity: 1; }
+    80% { transform: translate(0,0); opacity: 1; }
+    100% { transform: translate(-10px,-2px); opacity: 0; }
+}
+@keyframes key-loop {
+    0% { opacity: 0; transform: scale(0.5); }
+    20% { opacity: 1; transform: scale(1.5); }
+    80% { opacity: 0; transform: scale(2); }
+    100% { opacity: 0; transform: scale(0.5); }
+}
+@keyframes key-fill {
+    from { opacity: 0; transform: scale(.9); }
+}
